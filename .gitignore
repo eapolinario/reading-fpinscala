@@ -1,0 +1,21 @@
+# Scala / SBT
+target/
+project/target/
+project/project/
+*.class
+*.tasty
+.bsp/
+
+# Metals (Scala LSP)
+.metals/
+.bloop/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Nix / direnv
+.direnv/
+result
+result-*
