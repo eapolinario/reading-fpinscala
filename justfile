@@ -4,16 +4,12 @@ default:
 
 # Compile the project
 build:
-    sbt compile
+    scalac simple.scala
 
-# Run tests
-test:
-    sbt test
-
-# Start a Scala REPL with project on the classpath
-repl:
-    sbt console
+# Run the main program
+run:
+    scala simple.scala
 
 # Clean build artifacts
 clean:
-    sbt clean
+    rm -f *.class *.tasty
