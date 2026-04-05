@@ -14,6 +14,24 @@ run chapter:
 test chapter:
     scala-cli test {{chapter}}
 
+# Start a debug session suspended on port 5005, attach your DAP client to it
+debug chapter:
+    scala-cli test -J -agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005 {{chapter}}
+
+# Regenerate root BSP config for all chapters (run after adding a new chapter)
+setup-ide:
+    #!/usr/bin/env python3
+    import json, glob, os
+    bsp_path = '.bsp/scala-cli.json'
+    with open(bsp_path) as f:
+        bsp = json.load(f)
+    chapters = sorted(os.path.abspath(d) for d in glob.glob('chapter-*') if os.path.isdir(d))
+    base = [a for a in bsp['argv'] if '/chapter-' not in a and a != os.path.abspath('.')]
+    bsp['argv'] = base + chapters
+    with open(bsp_path, 'w') as f:
+        json.dump(bsp, f, indent=2)
+    print('Updated .bsp/scala-cli.json with:', chapters)
+
 # Clean build artifacts for a chapter
 clean chapter:
     scala-cli clean {{chapter}}
