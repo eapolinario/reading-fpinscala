@@ -15,8 +15,7 @@
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             jdk
-            scala
-            sbt
+            scala-cli
             metals
             just
           ];
