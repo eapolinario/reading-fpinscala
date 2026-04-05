@@ -6,6 +6,9 @@ project/project/
 *.tasty
 .bsp/
 
+# Scala CLI
+.scala-build/
+
 # Metals (Scala LSP)
 .metals/
 .bloop/
