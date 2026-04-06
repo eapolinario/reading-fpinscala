@@ -8,6 +8,7 @@ project/project/
 
 # Scala CLI
 .scala-build/
+*.semanticdb
 
 # Metals (Scala LSP)
 .metals/
